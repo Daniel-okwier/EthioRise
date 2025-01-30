@@ -1,183 +1,204 @@
-/* General Styles */
-body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
+.navbar {
+  background-color: #1f5156;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  position: sticky;
+  top: 0;
+  z-index: 20;
 }
 
-/* Header Styles */
-.main-header {
-    background-color: #001f3f; /* Dark navy background */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    z-index: 999;
-    transition: all 0.3s ease;
-    position: relative;
+.nav-container {
+  display: flex;
+  justify-content: space-between; /* Spacing for logo and menu */
+  align-items: center;
+  width: 100%;
+  height: 80px;
+  max-width: 1500px;
+  position: relative;
 }
 
-.header-top {
-    background-color: #007bff; /* Set a complementary color */
-    padding: 0; /* Remove padding to fill space */
+.nav-logo {
+  color: #f5b921; /* Logo color */
+  align-items: center;
+  margin-left: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
 }
 
-.header-top .inner-container {
+.nav-logo .logo {
+  width: 50px; /* Adjust width of the logo */
+  height: 50px; /* Adjust height of the logo */
+  border-radius: 50%; /* Make the logo circular */
+  margin-right: 10px; /* Space between logo and text */
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  text-align: center;
+  margin-right: 2rem;
+}
+
+.nav-links {
+  color: #fff; /* Link color set to white */
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  height: 100%;
+  border-bottom: 3px solid transparent;
+}
+
+.nav-item {
+  line-height: 40px;
+  margin-right: 1rem;
+}
+
+.nav-item:after {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 0;
+  background: transparent;
+  transition: width 0.7s ease, background-color 0.5s ease;
+}
+
+.nav-item:hover:after {
+  width: 100%;
+  background: #ffdd40;
+}
+
+.nav-item .active {
+  color: #ffdd40;
+  border: 1px solid #ffdd40;
+}
+
+.nav-icon {
+  display: none; /* Hidden by default */
+  color: #f5b921; /* Icon color */
+}
+
+.nav-icon .icon {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+}
+
+@media screen and (max-width: 960px) {
+  .nav-menu {
     display: flex;
-    align-items: center;
-    width: 100%; /* Ensure it takes full width */
-}
-
-.header-top .left-column {
-    display: flex;
-    align-items: center;
-    flex-grow: 1; /* Allow to grow and fill space */
-}
-
-/* Adjusting text container to take less than half the width */
-.header-top .text {
-    font-weight: bold;
-    background-color: #ff6347; /* Tomato color background */
-    color: #fff; /* White text */
-    padding: 10px 20px; /* Add padding for spacing */
-    width: 40%; /* Set width to 40% of the container */
-    margin-right: auto; /* Push it to the left */
-    text-align: center; /* Center the text */
-}
-
-.header-top .office-hour {
-    font-size: 16px;
-    font-weight: bold;
-    color: #fff; /* White text */
-    margin-left: 20px; /* Space between text and office hour */
-}
-
-.header-upper {
-    padding: 20px 0;
-    background-color: #001f3f; /* Same color as main header */
-}
-
-.header-upper .inner-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo-box .logo img {
-    max-width: 150px;
-    height: auto;
-}
-
-.nav-outer .main-menu .navigation {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.nav-outer .main-menu .navigation li {
-    margin-right: 30px;
-}
-
-.nav-outer .main-menu .navigation li a {
-    color: #fff; /* White text */
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-
-.nav-outer .main-menu .navigation li a:hover {
-    color: #0077b6;
-}
-
-/* Sticky Header Styles */
-.sticky-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #fff; /* Background color for sticky header */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    z-index: 999;
-    transform: translateY(-100%);
-    transition: transform 0.3s ease;
-}
-
-.sticky-header.stuck {
-    transform: translateY(0);
-}
-
-.sticky-header .logo-box .logo img {
-    max-width: 120px; /* Logo size in sticky header */
-}
-
-/* Mobile Menu Styles */
-.mobile-menu {
-    display: none; /* Mobile menu hidden by default */
-    background-color: #001f3f; /* Same color as main header */
-    padding: 20px;
-}
-
-.hamburger {
-    display: none; /* Hidden by default */
     flex-direction: column;
-    cursor: pointer;
-}
-
-.hamburger div {
-    height: 4px;
-    width: 25px;
-    background-color: #fff; /* Hamburger color */
-    margin: 4px;
-    transition: all 0.3s ease;
-}
-
-/* Responsive Styles */
-@media (max-width: 767px) {
-    .header-top .inner-container {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .nav-outer {
-        display: none; /* Hide desktop menu */
-    }
-
-    .mobile-menu {
-        display: block; /* Show mobile menu */
-    }
-
-    .hamburger {
-        display: flex; /* Show hamburger icon */
-        align-items: center;
-    }
-}
-
-
-
-
-.logo-box .logo img {
-    width: 100px; /* Set the desired width */
-    height: 100px; /* Set the same height for a perfect circle */
-    border-radius: 50%; /* Make the logo circular */
-    object-fit: cover; /* Ensures the image covers the container without distortion */
-}
-
-
-
-
-/* Sticky Header Styles */
-.sticky-header {
-    position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
-    background-color: #fff; /* Background color for sticky header */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    z-index: 999;
-    transition: transform 0.3s ease;
+    border-top: 1px solid #fff; /* Fixed typo */
+    position: absolute;
+    top: 80px;
+    left: -110%;
+    opacity: 1;
+    transition: all 0.5s ease;
+  }
+
+  .nav-menu.active {
+    background: #1f5156;
+    left: 0px;
+    opacity: 1;
+    transition: all 0.5s ease;
+    z-index: 1;
+  }
+
+  .nav-item .active {
+    color: #ffdd40;
+    border: none;
+  }
+
+  .nav-links {
+    padding: 1.5rem;
+    width: 100%;
+    display: table;
+    color: #fff; /* Ensure links are white in mobile view */
+  }
+
+  .nav-logo .icon {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .nav-icon {
+    display: block; /* Show icon on small screens */
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(-100%, -50%);
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    color: #ffdd40; /* Icon color */
+  }
 }
 
-.header-top {
-    transition: transform 0.3s ease; /* Smooth transition */
-}
+
+.nav-icon {
+    display: none; /* Hidden by default */
+    color: #f5b921; /* Icon color */
+    cursor: pointer; /* Change cursor to pointer for better UX */
+  }
+  
+  @media screen and (max-width: 960px) {
+    .nav-icon {
+      display: block; /* Show icon on small screens */
+      position: absolute;
+      top: 20px; /* Adjust positioning as needed */
+      right: 20px; /* Adjust positioning as needed */
+      font-size: 24px; /* Icon size */
+    }
+  
+    .nav-menu {
+      display: none; /* Hide menu by default */
+      flex-direction: column; /* Stack links vertically */
+      position: absolute; /* Position absolutely */
+      top: 80px; /* Below the navbar */
+      left: 0; /* Align to the left */
+      width: 100%; /* Full width */
+      background: #1f5156; /* Background color */
+      z-index: 1;
+    }
+  
+    .nav-menu.active {
+      display: flex; /* Show menu when active */
+    }
+  }
+
+
+
+  .menu-toggle {
+    display: none; /* Hidden by default */
+    background: none;
+    border: none;
+    color: #f5b921; /* Icon color */
+    font-size: 24px; /* Size of the icon */
+    cursor: pointer; /* Change cursor to pointer for better UX */
+  }
+  
+  @media screen and (max-width: 960px) {
+    .menu-toggle {
+      display: block; /* Show button on small screens */
+    }
+  
+    .nav-menu {
+      display: none; /* Hide menu by default */
+      flex-direction: column; /* Stack links vertically */
+      position: absolute; /* Position absolutely */
+      top: 80px; /* Below the navbar */
+      left: 0; /* Align to the left */
+      width: 100%; /* Full width */
+      background: #1f5156; /* Background color */
+      z-index: 1;
+    }
+  
+    .nav-menu.active {
+      display: flex; /* Show menu when active */
+    }
+  }

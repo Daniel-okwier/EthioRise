@@ -1,6 +1,8 @@
 /* Services Page Styles */
 .services-container {
-    padding: 40px;
+    max-width: 1200px; /* Set a maximum width */
+    margin: 0 auto; /* Center the container */
+    padding: 140px 40px 40px; /* Add top padding to account for the navbar height */
     background-color: #f8f9fa; /* Light background for contrast */
     text-align: center; /* Center text */
 }
@@ -15,6 +17,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive grid layout */
     gap: 20px; /* Space between cards */
+    justify-items: center; /* Center items within grid cells */
 }
 
 .service-card {
@@ -53,24 +56,3 @@
         font-size: 2rem; /* Adjust title size for mobile */
     }
 }
-
-
-
-
-/* Services Page Styles */
-.services-container {
-    max-width: 1200px; /* Set a maximum width */
-    margin: 0 auto; /* Center the container */
-    padding: 40px; /* Adjust padding as necessary */
-    background-color: #f8f9fa; /* Light background for contrast */
-    text-align: center; /* Center text */
-}
-
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive grid layout */
-    gap: 20px; /* Space between cards */
-    justify-items: center; /* Center items within grid cells */
-}
-
-/* Other existing styles remain unchanged */

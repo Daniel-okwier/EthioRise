@@ -2,6 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./footer.css";
 import { Link } from "react-router-dom";
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
   return (
     <footer className="theBackground text-light py-5">
       <div className="container">
@@ -23,7 +24,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/service" className="text-light">
+                <Link to="/services" className="text-light">
                   Services
                 </Link>
               </li>
@@ -39,6 +40,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
+          {/*  
           <div className="col-md-4">
             <h5>Contact Us</h5>
             <p>
@@ -51,10 +53,11 @@ const Footer = () => {
               
             </p>
           </div>
+          */}
         </div>
         <hr />
         <div className="text-center">
-          <p>&copy; 2024 ethiorise. All rights reserved.</p>
+          <p>&copy; {currentYear} ethiorise. All rights reserved.</p>
         </div>
       </div>
     </footer>

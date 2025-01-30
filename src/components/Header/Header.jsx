@@ -1,96 +1,78 @@
-import { useState, useEffect } from 'react'; // Import useEffect
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
+import logo from "../../assets/Images/er.jpg"; // Adjust the path to your logo
+import "./Header.css";
 
-import { Link } from "react-router-dom";
-import logo from "../../assets/Images/er.jpg"; // Adjust path as necessary
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./header.css";
+function NavBar() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // State to manage menu visibility
 
-function Header() {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [isSticky, setIsSticky] = useState(false);
-    const [isTopVisible, setIsTopVisible] = useState(true);
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen); // Toggle menu state
+  };
 
-    const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen);
-    };
+  return (
+    <>
+      <nav className="navbar">
+        <div className="nav-container">
+          <NavLink exact to="/" className="nav-logo">
+            <img src={logo} alt="Logo" className="logo" />
+            <span>EthioRise</span>
+          </NavLink>
 
-    const handleScroll = () => {
-        if (window.scrollY > 50) {
-            setIsSticky(true);
-            setIsTopVisible(false);
-        } else {
-            setIsSticky(false);
-            setIsTopVisible(true);
-        }
-    };
+          <button className="menu-toggle" onClick={toggleMenu}>
+            {isMenuOpen ? "✖" : "☰"} {/* Hamburger icon */}
+          </button>
 
-    useEffect(() => {
-        window.addEventListener("scroll", handleScroll);
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-        };
-    }, []);
-
-    return (
-        <div>
-            <header className={`main-header ${isSticky ? "sticky-header" : ""}`}>
-                <div className={`header-top ${isTopVisible ? "" : "hidden"}`}>
-                    <div className="auto-container">
-                        <div className="inner-container">
-                            <div className="left-column">
-                                <div className="text">
-                                    Elevate Your Presence with EthioRise!
-                                </div>
-                                <div className="office-hour">
-                                    24/7 Service
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="header-upper">
-                    <div className="auto-container">
-                        <div className="inner-container">
-                            <div className="logo-box">
-                                <div className="logo">
-                                    <Link to="/">
-                                        <img src={logo} alt="Logo" />
-                                    </Link>
-                                </div>
-                            </div>
-                            <div className="right-column">
-                                <div className="hamburger" onClick={toggleMenu}>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                </div>
-                                <div className={`nav-outer ${isMenuOpen ? "open" : ""}`}>
-                                    <nav className="main-menu navbar-expand-md navbar-light">
-                                        <div className="collapse navbar-collapse">
-                                            <ul className="navigation">
-                                                <li className="dropdown">
-                                                    <Link to="/">Home</Link>
-                                                </li>
-                                                <li className="dropdown">
-                                                    <Link to="/about">About Us</Link>
-                                                </li>
-                                                <li className="dropdown">
-                                                    <Link to="/services">Services</Link>
-                                                </li>
-                                                <li>
-                                                    <Link to="/contact">Contact Us</Link>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </nav>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </header>
+          <ul className={`nav-menu ${isMenuOpen ? "active" : ""}`}>
+            <li className="nav-item">
+              <NavLink 
+                exact 
+                to="/" 
+                activeClassName="active" 
+                className="nav-links" 
+                onClick={toggleMenu} // Close menu on link click
+              >
+                Home
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink 
+                exact 
+                to="/about" 
+                activeClassName="active" 
+                className="nav-links" 
+                onClick={toggleMenu} // Close menu on link click
+              >
+                About
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink 
+                exact 
+                to="/Services" 
+                activeClassName="active" 
+                className="nav-links" 
+                onClick={toggleMenu} // Close menu on link click
+              >
+               Services
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink 
+                exact 
+                to="/contact" 
+                activeClassName="active" 
+                className="nav-links" 
+                onClick={toggleMenu} // Close menu on link click
+              >
+                Contact Us
+              </NavLink>
+            </li>
+          </ul>
         </div>
-    );
+      </nav>
+    </>
+  );
 }
 
-export default Header;
+export default NavBar;

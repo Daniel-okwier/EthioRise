@@ -4,6 +4,7 @@
     align-items: center;
     justify-content: center;
     padding: 40px;
+    padding-top: 140px; /* Adjust this value based on the height of your navbar */
     background-color: #f9f9f9; /* Light background for contrast */
 }
 
